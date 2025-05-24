@@ -34,7 +34,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::delete('projects/{id}', [ProjectController::class, 'destroy'])->name('projects.destroy');
 
-
 });
 
 require __DIR__ . '/settings.php';
