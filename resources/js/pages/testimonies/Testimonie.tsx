@@ -42,7 +42,6 @@ export default function TestimoniUser() {
 
     const [openEdit, setOpenEdit] = useState(false);
     const [openAdd, setOpenAdd] = useState(false);
-    const [selectedTestimonie, setSelectedTestimonie] = useState<Testimonie | null>(null);
 
     const {
         data,

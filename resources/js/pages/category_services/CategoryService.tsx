@@ -39,8 +39,6 @@ export default function CategoryServices() {
     const {
         data,
         setData,
-        post,
-        put,
         delete: destroy,
         reset,
         processing,

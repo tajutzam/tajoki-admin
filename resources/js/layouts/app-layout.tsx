@@ -13,13 +13,11 @@ interface AppLayoutProps {
 export default ({ children, breadcrumbs, ...props }: AppLayoutProps) => {
     const { props: inertiaProps } = usePage();
 
-    const flash = inertiaProps.flash as { success?: string; error?: string } | undefined;
-    // Cast errors via unknown dulu supaya TypeScript gak complain
-    const errors = inertiaProps.errors as unknown as Record<string, string[]> | undefined;
-
     useEffect(() => {
+        const flash = inertiaProps.flash as { success?: string; error?: string } | undefined;
+        const errors = inertiaProps.errors as unknown as Record<string, string[]> | undefined;
 
-        console.log("flash :" , inertiaProps)
+        console.log('flash :', inertiaProps);
 
         if (flash?.success) {
             toast.success(flash.success);
@@ -38,7 +36,7 @@ export default ({ children, breadcrumbs, ...props }: AppLayoutProps) => {
                 }
             });
         }
-    }, [flash, errors]);
+    }, [inertiaProps]);
 
     return (
         <>
