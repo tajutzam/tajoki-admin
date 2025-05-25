@@ -8,6 +8,7 @@ import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/ca
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Table, TableBody, TableCell, TableHeader, TableRow } from '@/components/ui/table';
 import { Textarea } from '@/components/ui/textarea';
 import AppLayout from '@/layouts/app-layout';
 import { router } from '@inertiajs/react';
@@ -135,41 +136,41 @@ export default function CategoryServices() {
 
                     {/* Table */}
                     <div className="overflow-x-auto rounded-lg border">
-                        <table className="min-w-full divide-y divide-gray-200">
-                            <thead className="bg-gray-50">
-                                <tr>
-                                    <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">Nama</th>
-                                    <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">Deskripsi</th>
-                                    <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">Start From</th>
-                                    <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">Image</th>
-                                    <th className="px-4 py-2 text-center text-sm font-medium text-gray-700">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-gray-200 bg-white">
+                        <Table>
+                            <TableHeader className="bg-primary">
+                                <TableRow>
+                                    <TableCell className="px-4 py-2 text-left text-sm font-medium text-gray-700">Nama </TableCell>
+                                    <TableCell className="px-4 py-2 text-left text-sm font-medium text-gray-700">Deskripsi </TableCell>
+                                    <TableCell className="px-4 py-2 text-left text-sm font-medium text-gray-700">Start From </TableCell>
+                                    <TableCell className="px-4 py-2 text-left text-sm font-medium text-gray-700">Image </TableCell>
+                                    <TableCell className="px-4 py-2 text-left text-sm font-medium text-gray-700">Aksi </TableCell>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
                                 {categoryServices.data.map((item) => (
-                                    <tr key={item.id}>
-                                        <td className="px-4 py-2 whitespace-nowrap">{item.name}</td>
-                                        <td className="max-w-xs truncate px-4 py-2 whitespace-nowrap">{item.description}</td>
-                                        <td className="px-4 py-2 whitespace-nowrap">{item.start_from}</td>
-                                        <td className="px-4 py-2 whitespace-nowrap">
+                                    <TableRow key={item.id}>
+                                        <TableCell>{item.name}</TableCell>
+                                        <TableCell className="max-w-xs truncate px-4 py-2 whitespace-nowrap">{item.description}</TableCell>
+                                        <TableCell>{item.start_from}</TableCell>
+                                        <TableCell>
                                             <img
                                                 src={item.image ? `/storage/${item.image}` : '/placeholder.png'}
                                                 alt={item.name}
                                                 className="h-25 w-25 rounded object-cover"
                                             />
-                                        </td>
-                                        <td className="space-x-2 px-4 py-2 text-center whitespace-nowrap">
+                                        </TableCell>
+                                        <TableCell className="space-x-2 px-4 py-2 text-center whitespace-nowrap">
                                             <Button variant="secondary" size="sm" onClick={() => handleEdit(item)} title="Edit">
                                                 <Edit size={16} />
                                             </Button>
                                             <Button variant="destructive" size="sm" onClick={() => handleDelete(item.id)} title="Hapus">
                                                 <Trash2Icon size={16} />
                                             </Button>
-                                        </td>
-                                    </tr>
+                                        </TableCell>
+                                    </TableRow>
                                 ))}
-                            </tbody>
-                        </table>
+                            </TableBody>
+                        </Table>
                     </div>
 
                     {/* Pagination */}

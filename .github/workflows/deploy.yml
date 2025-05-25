@@ -28,6 +28,7 @@ jobs:
 
             composer install --no-interaction --prefer-dist --optimize-autoloader
             php artisan migrate
+            php artisan storage:link
 
             php artisan config:cache
             php artisan route:cache
