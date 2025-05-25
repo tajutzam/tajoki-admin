@@ -137,7 +137,7 @@ export default function CategoryServices() {
                     {/* Table */}
                     <div className="overflow-x-auto rounded-lg border">
                         <Table>
-                            <TableHeader className="bg-primary">
+                            <TableHeader>
                                 <TableRow>
                                     <TableCell className="px-4 py-2 text-left text-sm font-medium text-gray-700">Nama </TableCell>
                                     <TableCell className="px-4 py-2 text-left text-sm font-medium text-gray-700">Deskripsi </TableCell>

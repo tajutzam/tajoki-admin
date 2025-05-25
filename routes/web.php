@@ -1,8 +1,12 @@
 <?php
 
 use App\Http\Controllers\CategoryServiceController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TestimoniController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -33,6 +37,23 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('projects/{id}', [ProjectController::class, 'update'])->name('projects.update');
 
     Route::delete('projects/{id}', [ProjectController::class, 'destroy'])->name('projects.destroy');
+
+    Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
+    Route::post('/employees', [EmployeeController::class, 'store'])->name('employees.store');
+    Route::put('/employees/{id}', [EmployeeController::class, 'update'])->name('employees.update');
+    Route::delete('/employees/{id}', [EmployeeController::class, 'destroy'])->name('employees.destroy');
+
+    Route::resource('payment-proofs', PaymentController::class)->except(['create', 'show', 'edit']);
+
+
+    Route::resource('transactions', TransactionController::class)->except(['edit']);
+
+    Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
+    Route::post('/customers', [CustomerController::class, 'store'])->name('customers.store');
+    Route::put('/customers/{id}', [CustomerController::class, 'update'])->name('customers.update');
+    Route::delete('/customers/{id}', [CustomerController::class, 'destroy'])->name('customers.destroy');
+
+
 
 });
 

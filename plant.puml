@@ -1,0 +1,38 @@
+@startuml
+start
+
+partition "Authentication" {
+    :Login ke sistem;
+    :Menampilkan Dashboard;
+}
+
+partition "Manage Product" {
+    :Pilih Menu Produk;
+    :Tampilkan Daftar Produk;
+
+    if (Tambah Produk?) then (Ya)
+        :Isi Form Produk (id, nama, deskripsi, harga, stok);
+        :Simpan Produk Baru;
+    else if (Ubah Produk?) then (Ya)
+        :Pilih Produk;
+        :Edit Data Produk;
+        :Simpan Perubahan;
+    else if (Hapus Produk?) then (Ya)
+        :Pilih Produk;
+        :Konfirmasi Penghapusan;
+        :Hapus Produk dari Sistem;
+    else if (Export Data?) then (Ya)
+        :Pilih Format Export (PDF/Excel);
+        :Proses Export Data;
+        :Unduh File Export;
+    else
+        :Lihat Detail Produk;
+    endif
+}
+
+partition "Authentication" {
+    :Logout dari sistem;
+}
+
+stop
+@enduml

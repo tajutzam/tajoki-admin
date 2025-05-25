@@ -4,7 +4,7 @@ import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BoxIcon, DollarSign, FolderKanban, LayoutGrid, MessageSquareQuote, Receipt, Users } from 'lucide-react';
+import { BoxIcon, DollarSign, FolderKanban, LayoutGrid, MessageSquareQuote, Receipt, UserCircle, Users, UsersRound } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -34,8 +34,18 @@ const mainNavItems: NavItem[] = [
         icon: FolderKanban, // ikon folder atau proyek
     },
     {
+        title: 'Employees',
+        href: '/employees',
+        icon: UserCircle, // ikon folder atau proyek
+    },
+    {
+        title: 'Customers',
+        href: '/customers',
+        icon: UsersRound, // ikon folder atau proyek
+    },
+    {
         title: 'Bukti Pembayaran',
-        href: '/payments-proof',
+        href: '/payment-proofs',
         icon: Receipt, // ikon struk atau kwitansi
     },
     {
