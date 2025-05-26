@@ -29,6 +29,8 @@ type Transaction = {
     employee: { id: number; name: string };
     payment_proof: string;
     method_payments: string;
+    status_tr: string;
+    status: string;
 };
 
 interface IndexProps {
@@ -285,6 +287,8 @@ export class Index extends Component<IndexProps, IndexState> {
                                     <TableHead>Employee</TableHead>
                                     <TableHead>Payment Proof</TableHead>
                                     <TableHead>Method Payments</TableHead>
+                                    <TableHead>Status Payment</TableHead>
+                                    <TableHead>Status Transaksi</TableHead>
                                     <TableHead>Aksi</TableHead>
                                 </TableRow>
                             </TableHeader>
@@ -316,6 +320,22 @@ export class Index extends Component<IndexProps, IndexState> {
                                                 )}
                                             </TableCell>
                                             <TableCell>{trx.method_payments}</TableCell>
+                                            <TableCell>
+                                                <Badge>{trx.status}</Badge>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Badge
+                                                    className={
+                                                        trx.status_tr === 'done'
+                                                            ? 'bg-green-500 text-white'
+                                                            : trx.status_tr === 'cancel'
+                                                              ? 'bg-red-500 text-white'
+                                                              : 'bg-gray-500 text-white'
+                                                    }
+                                                >
+                                                    {trx.status_tr}
+                                                </Badge>
+                                            </TableCell>
                                             <TableCell className="space-x-2">
                                                 <Button size="sm" onClick={() => this.handleShow(trx.id)}>
                                                     Show
